@@ -1,14 +1,20 @@
 {
+
 	"manifest_version" : 2,
-	"name" : "test",
-	"version" : "1.1",
-	"browser_action":{
-		"default_popup" : "hello.html"
-	},
-	"permissions": [
-		"tabs"
+	"name" : "GoogleCalendarExtention",
+	"version": "1.0",
+
+  	"content_scripts": [
+		{
+			"matches": ["https://calendar.google.com/calendar/*"],
+			"js": ["script.js"]
+		}
 	],
 	"background": {
-    "scripts": ["bg.js"]
-  }
+		"scripts": ["background.js"],
+		"persistent": false
+	},
+	"permissions": [
+		"activeTab", "contextMenus"
+	]
 }
