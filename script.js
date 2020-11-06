@@ -9,7 +9,7 @@ chrome.runtime.onMessage.addListener(
 					let time = elements[i].getElementsByClassName("ynRLnc")[0].innerHTML;
 					if (request.message == "hideTitleM"){
 						if (time.match(/^\d{2}:\d{2}～\d{2}:\d{2}/)){
-							elements[i].getElementsByClassName("yzifAd")[0].innerHTML = time.match(/^\d{2}:\d{2}～\d{2}:\d{2}/);;
+							elements[i].getElementsByClassName("yzifAd")[0].innerHTML = time.match(/^\d{2}:\d{2}～\d{2}:\d{2}/);
 							elements[i].getElementsByClassName("J0Jt0d")[0].innerHTML = "";
 						} else if (time.match("リマインダ")){
 							elements[i].getElementsByClassName("yzifAd")[0].innerHTML = "リマインダー";
@@ -58,12 +58,21 @@ chrome.runtime.onMessage.addListener(
 							elements[i].getElementsByClassName("FAxxKc")[0].innerHTML = "タスク";
 						} else {
 							try{
-								elements[i].getElementsByClassName("FAxxKc")[0].innerHTML = "";
-								try {
-									elements[i].getElementsByClassName("K9QN7e")[0].innerHTML = "";		
-								}catch(e){;}
-							}catch(e){
-								elements[i].getElementsByClassName("yzifAd")[0].innerHTML = "終日の予定";
+								// const classList = ["m6vl0d", "A6wOnd"]
+								elements[i].getElementsByClassName("m6vl0d")[0].innerHTML = "";
+								elements[i].getElementsByClassName("A6wOnd")[0].innerHTML = "";
+								elements[i].getElementsByClassName("FAxxKc")[0].innerHTML = time.match(/^\d{2}:\d{2}～\d{2}:\d{2}/);
+							}catch (e){
+								try{
+									elements[i].getElementsByClassName("FAxxKc")[0].innerHTML = "";
+									elements[i].getElementsByClassName("lFe10c")[0].setAttribute("style", "height: 100%;");
+									elements[i].getElementsByClassName("gVNoLb")[0].setAttribute("style", "font-size: 300%; height: 100%");
+									try {
+										elements[i].getElementsByClassName("K9QN7e")[0].innerHTML = "";		
+									}catch(e){;}
+								}catch(e){
+									elements[i].getElementsByClassName("yzifAd")[0].innerHTML = "終日の予定";
+								}
 							}
 						}
 					} else if (request.message == "hideReminderW") {
